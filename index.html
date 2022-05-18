@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THROW DICE </title>
+    <style>
+        #container{
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            margin: auto;
+            border: 1px solid red;
+            gap: 10px;
+            padding: 15px;
+        }
+
+        #container>div{
+            height: 100px;
+            border: 1px solid green;
+            background-color: rgb(202, 203, 203);
+        }
+        #container>div>p{
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="winner">winner</div>
+        <div id="member-1">Member 1</div>
+        <div id="member-2">Member 2</div>
+        <div id="member-3">Member 3</div>
+        <button id="roll">ROLL THE DICE</button>
+    </div>
+    
+</body>
+<script>
+
+    // implemented logic here
+    function generateNumber(){
+       return Math.floor(Math.random()*(6-1+1)+1);
+    }
+
+    document.getElementById('roll').addEventListener('click',function(){
+
+        document.getElementById('winner').innerHTML="";
+        document.getElementById('member-1').innerHTML="";
+        document.getElementById('member-2').innerHTML="";
+        document.getElementById('member-3').innerHTML="";
+        // first 3 random number and store
+        var a=generateNumber();
+        var b=generateNumber();
+        var c=generateNumber();
+        // console.log(a,b,c)
+        var winner=document.createElement('p');
+        var member1=document.createElement('p');
+        var member2=document.createElement('p');
+        var member3=document.createElement('p');
+        if(a==b && b==c && a==c){
+            winner.innerText="Draw";
+            // winner.style.color='blue'
+
+            member1.innerText=a;
+            member1.style.color='#034f84'
+
+            member2.innerText=a;
+            member2.style.color='#034f84'
+
+            member3.innerText=a;
+            member3.style.color='#034f84'
+        }else if(a>b && a>c){
+            if(b>c){
+                winner.innerText="Winner Member 1";
+            // winner.style.color='blue'
+
+            member1.innerText=a;
+            member1.style.color='#82b74b'
+
+            member2.innerText=b;
+            member2.style.color='#feb236'
+
+            member3.innerText=c;
+            member3.style.color='red'
+
+            }else{
+                winner.innerText="Winner Member 1";
+            // winner.style.color='blue'
+
+            member1.innerText=a;
+            member1.style.color='#82b74b'
+
+            member2.innerText=b;
+            member2.style.color='red'
+
+            member3.innerText=c;
+            member3.style.color='#feb236'
+
+            }
+        }else if(b>a && b>c){
+            if(a>c){
+                winner.innerText="Winner Member 2";
+            member1.innerText=a;
+            member1.style.color='#feb236'
+
+            member2.innerText=b;
+            member2.style.color='#82b74b'
+
+            member3.innerText=c;
+            member3.style.color='red'
+
+            }else{
+                winner.innerText="Winner Member 2";
+
+            member1.innerText=a;
+            member1.style.color='red'
+
+            member2.innerText=b;
+            member2.style.color='#82b74b'
+
+            member3.innerText=c;
+            member3.style.color='#feb236'
+
+            }
+        }else if(c>a && c>b){
+            if(a>b){
+                winner.innerText="Winner Member 3";
+            member1.innerText=a;
+            member1.style.color='#feb236'
+
+            member2.innerText=b;
+            member2.style.color='red'
+
+            member3.innerText=c;
+            member3.style.color='#82b74b'
+
+            }else{
+                winner.innerText="Winner Member 3";
+
+            member1.innerText=a;
+            member1.style.color='red'
+
+            member2.innerText=b;
+            member2.style.color='#feb236'
+
+            member3.innerText=c;
+            member3.style.color='#82b74b'
+
+            }
+        }
+
+        
+
+        document.getElementById('winner').append(winner);
+        document.getElementById('member-1').append(member1);
+        document.getElementById('member-2').append(member2);
+        document.getElementById('member-3').append(member3);
+
+
+    });
+
+</script>
+</html>
